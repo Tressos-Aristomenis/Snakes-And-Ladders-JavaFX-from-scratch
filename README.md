@@ -15,7 +15,8 @@ Eg. Say you are at 99, if you hit 5 you should go 99 + 5 = 104, which is too lar
 
 Warning: This edition is extremely disturbing after some time.
 
-I also have added some chill background music of one of my favourite artists, "Yann Tiersen". You can always pause it if you dislike it.
+# Features
+I have added some background music of one of my favourite artists, "Yann Tiersen". You can always pause it if you dislike it.
 
 // TO-DO:
 
