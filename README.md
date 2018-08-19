@@ -5,7 +5,8 @@ Game preview screenshot: http://prntscr.com/kkk7ad
 
 Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_and_Ladders
 
-# Game Variation:
+
+Game Variation:
   # - Classic
 The standard rules of the game mention that if the dice roll is too large, you go to the final square and back again.
 Eg. Say you currently are at 98. If you hit 3 you should go 98 + 3 = 101, which is too large so you land 1 square before the final one, so 99.
@@ -15,8 +16,10 @@ Eg. Say you are at 99, if you hit 5 you should go 99 + 5 = 104, which is too lar
 
 Warning: This edition is extremely disturbing after some time.
 
+
 # Features
 I have added some background music of one of my favourite artists, "Yann Tiersen". You can always pause it if you dislike it.
+
 
 # // TO-DO:
 
