@@ -18,7 +18,7 @@ Warning: This edition is extremely disturbing after some time.
 # Features
 I have added some background music of one of my favourite artists, "Yann Tiersen". You can always pause it if you dislike it.
 
-// TO-DO:
+# // TO-DO:
 
 - Place a volume slider.
 - Fix potential bug when there is a winner. (Show-and-wait and PauseTransition don't work well together)
