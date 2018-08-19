@@ -1,10 +1,12 @@
 # Snakes-And-Ladders-JavaFX-from-scratch
+
+
 This is an old board game called "Snakes And Ladders". I created it using JavaFX and FXML. Read me.
 
 Game preview screenshot: http://prntscr.com/kkk7ad
 
 Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_and_Ladders
-
+#
 
 # Game Variations:
   # - Classic
@@ -15,7 +17,7 @@ This is my edition. The only change is that when your dice roll is too large, yo
 Eg. Say you are at 99, if you hit 5 you should go 99 + 5 = 104, which is too large so you land at square 4.
 
 Warning: This edition is extremely disturbing after some time.
-
+#
 
 # Features
 I have added some background music of one of my favourite artists, "Yann Tiersen". You can always pause it if you dislike it.
