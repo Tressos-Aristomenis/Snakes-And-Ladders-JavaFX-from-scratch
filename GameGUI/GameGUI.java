@@ -80,7 +80,7 @@ public class GameGUI implements Initializable {
 	private final String BLUE_PIECE_IMAGE_PATH	  = "icons/blue_circle.png";
 	private final String GREEN_PIECE_IMAGE_PATH   = "icons/green_circle.png";
 	private final String ROLL_THE_DICE_IMAGE_PATH = "icons/Dice.png";
-	private final String TRACKS_PATH = "D:/MyWork/Other/Programming/REFACTORED_SnakesAndLadders/Refactored_SnakesAndLadders/src/music";
+	private final String TRACKS_PATH = "D:/MyWork/Other/Programming/REFACTORED_SnakesAndLadders/Refactored_SnakesAndLadders/src/Yann Tiersen";
 	private final double MEDIA_VOLUME = 0.4;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
