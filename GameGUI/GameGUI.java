@@ -80,7 +80,7 @@ public class GameGUI implements Initializable {
 	private final String BLUE_PIECE_IMAGE_PATH	  = "icons/blue_circle.png";
 	private final String GREEN_PIECE_IMAGE_PATH   = "icons/green_circle.png";
 	private final String ROLL_THE_DICE_IMAGE_PATH = "icons/Dice.png";
-	private final String TRACKS_PATH = "D:\\MyWork\\Other\\Programming\\Refactored_SnakesAndLadders_v2\\Refactored_SnakesAndLadders_v2\\src\\music";
+	private final String TRACKS_PATH = System.getProperty("user.dir") + "\\music";
 	private final double MEDIA_VOLUME = 0.4;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
@@ -198,7 +198,7 @@ public class GameGUI implements Initializable {
 	
 	public void aboutMediaPlayer() {
 		TRACKS_DIRECTORY = new File(TRACKS_PATH);
-        TRACKLIST = TRACKS_DIRECTORY.listFiles();
+        	TRACKLIST = TRACKS_DIRECTORY.listFiles();
 		
 		int randomTrackNumber = new Random().nextInt((TRACKLIST.length -1 - 0) + 1) + 0;
 		File trackDirectory = new File(TRACKS_DIRECTORY.getPath()+"/"+TRACKLIST[randomTrackNumber].getName());
