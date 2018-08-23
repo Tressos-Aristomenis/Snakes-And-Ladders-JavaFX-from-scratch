@@ -1,4 +1,4 @@
-# ~~~ READ ME ~~~
+# ► READ ME
 
 This is an old board game called "Snakes And Ladders". I created it using JavaFX and FXML. Read me.
 
@@ -11,7 +11,7 @@ Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_an
 
 - Go to my releases.
 - Choose "Code & Executable".
-- Download the .jar file. (Named: SnakesAndLadders_version2.jar)
+- Download the .jar file called «SnakesAndLadders_version2.jar».
 - Save and run the .jar file.
 - Enjoy and star my repository if you enjoyed it!
 
