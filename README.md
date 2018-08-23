@@ -1,7 +1,9 @@
 # !!! READ ME !!!
 
 This is an old board game called "Snakes And Ladders". I created it using JavaFX and FXML. Read me.
+
 Game preview screenshot: http://prntscr.com/kkk7ad
+
 Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_and_Ladders
 
 # Game Variations:
