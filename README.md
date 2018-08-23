@@ -6,6 +6,16 @@ Game preview screenshot: http://prntscr.com/kkk7ad
 
 Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_and_Ladders
 
+
+# How to run my application
+
+- Go to my releases
+- Choose "Code & Executable"
+- Download the .jar file. (Named: SnakesAndLadders_version2.jar)
+- Save and run the .jar file.
+- Enjoy and star my repository if you enjoyed it!
+
+
 # Game Variations:
 - CLASSIC
 
@@ -29,12 +39,3 @@ I have added some background music of one of my favourite artists, "Yann Tiersen
 
 - Place a volume slider.
 - Fix potential bug when last square is reached. (Show-and-wait and PauseTransition don't work well together)
-
-
-# How to run my application
-
-- Go to my releases
-- Choose "Code & Executable"
-- Download the .jar file. (Named: SnakesAndLadders_version2.jar)
-- Save and run the .jar file.
-- Enjoy and star my repository if you enjoyed it!
