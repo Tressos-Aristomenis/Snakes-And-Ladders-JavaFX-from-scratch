@@ -33,10 +33,10 @@ import javafx.scene.media.MediaPlayer;
  */
 
 public class GameGUI implements Initializable {
-	@FXML
-	private GridPane gameGrid;
+    @FXML
+    private GridPane gameGrid;
 	
-	@FXML
+    @FXML
     private Label nowPlayingLabel;
 	
     @FXML
@@ -69,7 +69,7 @@ public class GameGUI implements Initializable {
     @FXML
     private ImageView chooseGreenPieceImage;
 	
-	@FXML
+    @FXML
     private Button classicVariation;
 
     @FXML
@@ -77,21 +77,23 @@ public class GameGUI implements Initializable {
 	
 	public static final String SNAKE_OR_LADDER_HIT_CELL_STYLE = "-fx-background-color: #FFDF00";
 	private final String DEFAULT_TILE_STYLE = "-fx-background-color: #228b22";
-	private final String BLUE_PIECE_IMAGE_PATH	  = "icons/blue_circle.png";
+	private final String BLUE_PIECE_IMAGE_PATH    = "icons/blue_circle.png";
 	private final String GREEN_PIECE_IMAGE_PATH   = "icons/green_circle.png";
 	private final String ROLL_THE_DICE_IMAGE_PATH = "icons/Dice.png";
-	private final String TRACKS_PATH = System.getProperty("user.dir") + "\\music";
-	private final double MEDIA_VOLUME = 0.4;
+	// private final String TRACKS_PATH = System.getProperty("user.dir") + "\\music";
+	// private final double MEDIA_VOLUME = 0.4;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
 	private GameBoard gameBoard;
 	private GameVariation gameVariation;
 	private GameMode gameMode;
 	private PlayerController playerController;
+	/*
+	private Media currentTrack = null;
 	private static MediaPlayer MY_MEDIA_PLAYER;
 	private File[] TRACKLIST;
 	private File TRACKS_DIRECTORY;
-	private Media currentTrack = null;
+	*/
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -115,7 +117,7 @@ public class GameGUI implements Initializable {
 		startNewGame();
 		
 		
-		
+	
 		againstHumanBtn.setOnAction(ev -> {
 			gameMode = GameMode.AGAINST_HUMAN;
 			startNewGame();
@@ -196,7 +198,9 @@ public class GameGUI implements Initializable {
 		unlockDiceButton();
 	}
 	
+	
 	public void aboutMediaPlayer() {
+		/*
 		TRACKS_DIRECTORY = new File(TRACKS_PATH);
         	TRACKLIST = TRACKS_DIRECTORY.listFiles();
 		
@@ -219,20 +223,23 @@ public class GameGUI implements Initializable {
 				playNextTrack();
 			}
 		});
+		*/
+	}
+	
+	
+	@FXML
+        public void resumeTrack() {
+		//MY_MEDIA_PLAYER.play();
 	}
 	
 	@FXML
-    public void resumeTrack() {
-		MY_MEDIA_PLAYER.play();
-	}
-	
-	@FXML
-    public void pauseTrack() {
-		MY_MEDIA_PLAYER.pause();
+        public void pauseTrack() {
+		//MY_MEDIA_PLAYER.pause();
 	}
 	
 	@FXML
 	public void playNextTrack() {
+		/*
 		int randomTrackNumber = new Random().nextInt((TRACKLIST.length -1 - 0) + 1) + 0;
 		File trackDirectory = new File(TRACKS_DIRECTORY.getPath()+"/"+TRACKLIST[randomTrackNumber].getName());
 		
@@ -246,6 +253,7 @@ public class GameGUI implements Initializable {
 		MY_MEDIA_PLAYER.setVolume(MEDIA_VOLUME);
 
 		nowPlayingLabel.setText(TRACKLIST[randomTrackNumber].getName());
+		*/
 	}
 	
 	public void updateScore(Player winner) {
