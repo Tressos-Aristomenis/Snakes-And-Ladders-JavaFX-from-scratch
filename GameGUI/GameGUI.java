@@ -35,10 +35,10 @@ import javafx.scene.media.MediaPlayer;
  */
 
 public class GameGUI implements Initializable {
-	@FXML
-	private GridPane gameGrid;
+    @FXML
+    private GridPane gameGrid;
 	
-	@FXML
+    @FXML
     private Label nowPlayingLabel;
 	
     @FXML
@@ -71,7 +71,7 @@ public class GameGUI implements Initializable {
     @FXML
     private ImageView chooseGreenPieceImage;
 	
-	@FXML
+    @FXML
     private Button classicVariation;
 
     @FXML
@@ -79,20 +79,37 @@ public class GameGUI implements Initializable {
 	
 	public static final String SNAKE_OR_LADDER_HIT_CELL_STYLE = "-fx-background-color: #FFDF00";
 	private final String DEFAULT_TILE_STYLE = "-fx-background-color: #228b22";
+<<<<<<< HEAD
 	private final Image BLUE_PIECE_IMAGE = ResourceLoader.getImage("blue_circle.png");
 	private final Image GREEN_PIECE_IMAGE   = ResourceLoader.getImage("green_circle.png");
 	private final Image ROLL_THE_DICE_IMAGE = ResourceLoader.getImage("Dice.png");
 	private final double MEDIA_VOLUME = 0.35;
+=======
+	private final String BLUE_PIECE_IMAGE_PATH    = "icons/blue_circle.png";
+	private final String GREEN_PIECE_IMAGE_PATH   = "icons/green_circle.png";
+	private final String ROLL_THE_DICE_IMAGE_PATH = "icons/Dice.png";
+	// private final String TRACKS_PATH = System.getProperty("user.dir") + "\\music";
+	// private final double MEDIA_VOLUME = 0.4;
+>>>>>>> b0d27839e3308a4c6174b8292d16258269a5705a
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
 	private GameBoard gameBoard;
 	private GameVariation gameVariation;
 	private GameMode gameMode;
 	private PlayerController playerController;
+<<<<<<< HEAD
 	
 	private Media currentTrack = null;
 	private static MediaPlayer MY_MEDIA_PLAYER;
 	
+=======
+	/*
+	private Media currentTrack = null;
+	private static MediaPlayer MY_MEDIA_PLAYER;
+	private File[] TRACKLIST;
+	private File TRACKS_DIRECTORY;
+	*/
+>>>>>>> b0d27839e3308a4c6174b8292d16258269a5705a
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -118,6 +135,11 @@ public class GameGUI implements Initializable {
 		initializeMediaPlayer();
 		startNewGame();
 		
+<<<<<<< HEAD
+=======
+		
+	
+>>>>>>> b0d27839e3308a4c6174b8292d16258269a5705a
 		againstHumanBtn.setOnAction(ev -> {
 			gameMode = GameMode.AGAINST_HUMAN;
 			startNewGame();
@@ -199,10 +221,24 @@ public class GameGUI implements Initializable {
 	}
 	
 	
+<<<<<<< HEAD
 	public void initializeMediaPlayer() {
 		int randomTrackNumber = new Random().nextInt((ResourceLoader.TRACKLIST.length -1 - 0) + 1) + 0;
 		String track = ResourceLoader.getTrack(randomTrackNumber);
 		currentTrack = new Media(track);
+=======
+	public void aboutMediaPlayer() {
+		/*
+		TRACKS_DIRECTORY = new File(TRACKS_PATH);
+        	TRACKLIST = TRACKS_DIRECTORY.listFiles();
+		
+		int randomTrackNumber = new Random().nextInt((TRACKLIST.length -1 - 0) + 1) + 0;
+		File trackDirectory = new File(TRACKS_DIRECTORY.getPath()+"/"+TRACKLIST[randomTrackNumber].getName());
+
+		try {
+			currentTrack = new Media(trackDirectory.toURI().toURL().toString());
+		} catch(MalformedURLException me) {}
+>>>>>>> b0d27839e3308a4c6174b8292d16258269a5705a
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
 		MY_MEDIA_PLAYER.play();
@@ -216,30 +252,48 @@ public class GameGUI implements Initializable {
 				playNextTrack();
 			}
 		});
+		*/
+	}
+	
+	
+	@FXML
+        public void resumeTrack() {
+		//MY_MEDIA_PLAYER.play();
 	}
 	
 	@FXML
-    public void resumeTrack() {
-		MY_MEDIA_PLAYER.play();
-	}
-	
-	@FXML
-    public void pauseTrack() {
-		MY_MEDIA_PLAYER.pause();
+        public void pauseTrack() {
+		//MY_MEDIA_PLAYER.pause();
 	}
 	
 	@FXML
 	public void playNextTrack() {
+<<<<<<< HEAD
 		MY_MEDIA_PLAYER.stop();			// stop current media player.
 		int randomTrackNumber = new Random().nextInt((ResourceLoader.TRACKLIST.length -1 - 0) + 1) + 0;
 		String track = ResourceLoader.getTrack(randomTrackNumber);
 		currentTrack = new Media(track);
+=======
+		/*
+		int randomTrackNumber = new Random().nextInt((TRACKLIST.length -1 - 0) + 1) + 0;
+		File trackDirectory = new File(TRACKS_DIRECTORY.getPath()+"/"+TRACKLIST[randomTrackNumber].getName());
+		
+		MY_MEDIA_PLAYER.stop();
+		try {
+			currentTrack = new Media(trackDirectory.toURI().toURL().toString());
+		} catch(MalformedURLException me) {}
+>>>>>>> b0d27839e3308a4c6174b8292d16258269a5705a
 
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);	// create new media player with another track.
 		MY_MEDIA_PLAYER.play();
 		MY_MEDIA_PLAYER.setVolume(MEDIA_VOLUME);
 
+<<<<<<< HEAD
 		nowPlayingLabel.setText(ResourceLoader.TRACKLIST[randomTrackNumber].getName());
+=======
+		nowPlayingLabel.setText(TRACKLIST[randomTrackNumber].getName());
+		*/
+>>>>>>> b0d27839e3308a4c6174b8292d16258269a5705a
 	}
 	
 	public void updateScore(Player winner) {
