@@ -34,7 +34,7 @@
                   </Label>
                   <HBox alignment="CENTER" spacing="30.0">
                      <children>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#resumeTrack" text="&#9658;">
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#resumeTrack" text="►">
                            <font>
                               <Font name="Arial Black" size="15.0" />
                            </font>
@@ -97,9 +97,6 @@
                         <Font size="17.0" />
                      </font></Label>
                   <ImageView fx:id="diceIndicatorImage" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/blankdice.png" />
-                     </image>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -209,16 +206,16 @@
                   <HBox alignment="CENTER" spacing="50.0">
                      <children>
                         <ImageView fx:id="chooseBluePieceImage" onMouseClicked="#choosePieceImage" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/blue_circle.png" />
-                           </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <image>
+                              <Image url="@/Res/images/blue_circle.png" />
+                           </image>
                         </ImageView>
                         <ImageView fx:id="chooseGreenPieceImage" onMouseClicked="#choosePieceImage" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/green_circle.png" />
+                              <Image url="@/Res/images/green_circle.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -1176,92 +1173,92 @@
             </GridPane>
 			<ImageView disable="true" fitHeight="200.0" fitWidth="492.0" layoutX="241.0" layoutY="84.0" mouseTransparent="true" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" rotate="127.2">
 			 <image>
-				<Image url="@../icons/Snake.gif" />
+				<Image url="@/Res/images/Snake.gif" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="280.0" fitWidth="492.0" layoutX="555.0" layoutY="11.0" mouseTransparent="true" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" rotate="56.3">
 			 <image>
-				<Image url="@../icons/snake_png_3_by_paradise234-d5e4bke.png" />
+				<Image url="@/Res/images/snake_png_3_by_paradise234-d5e4bke.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="230.0" fitWidth="492.0" layoutX="285.0" layoutY="239.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-72.9">
 			 <image>
-				<Image url="@../icons/snake-png-image-picture-download-png-image-3052.png" />
+				<Image url="@/Res/images/snake-png-image-picture-download-png-image-3052.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="135.0" fitWidth="492.0" layoutX="231.0" layoutY="339.0" mouseTransparent="true" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" rotate="40.0">
 			 <image>
-				<Image url="@../icons/snake_png_3_by_paradise234-d5e4bke.png" />
+				<Image url="@/Res/images/snake_png_3_by_paradise234-d5e4bke.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="130.0" fitWidth="492.0" layoutX="408.0" layoutY="254.0" mouseTransparent="true" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" rotate="-106.4">
 			 <image>
-				<Image url="@../icons/Snake-PNG-HD.png" />
+				<Image url="@/Res/images/Snake-PNG-HD.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="180.0" fitWidth="492.0" layoutX="-39.0" layoutY="346.0" mouseTransparent="true" nodeOrientation="RIGHT_TO_LEFT" opacity="0.7" pickOnBounds="true" preserveRatio="true" rotate="43.7">
 			 <image>
-				<Image url="@../icons/snake-png-image-3654-414.png" />
+				<Image url="@/Res/images/snake-png-image-3654-414.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="178.0" fitWidth="511.0" layoutX="117.0" layoutY="667.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="10.0">
 			 <image>
-				<Image url="@../icons/Snake-PNG-HD.png" />
+				<Image url="@/Res/images/Snake-PNG-HD.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="210.0" fitWidth="492.0" layoutX="141.0" layoutY="454.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-80.0">
 			 <image>
-				<Image url="@../icons/kisspng-sketch-snake-u86c7u738b-coral-reef-snakes-orange-creative-snake-5a90adfe3cf9a5.8576785615194311662498.png" />
+				<Image url="@/Res/images/kisspng-sketch-snake-u86c7u738b-coral-reef-snakes-orange-creative-snake-5a90adfe3cf9a5.8576785615194311662498.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="400.0" fitWidth="492.0" layoutX="383.0" layoutY="366.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-50.0">
 			 <image>
-				<Image url="@../icons/snake-png-image-picture-download-png-image-200.png" />
+				<Image url="@/Res/images/snake-png-image-picture-download-png-image-200.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="220.0" fitWidth="188.0" layoutX="243.0" layoutY="527.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="20.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="93.0" fitWidth="132.0" layoutX="612.0" layoutY="676.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="45.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="190.0" fitWidth="431.0" layoutX="649.0" layoutY="502.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="45.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="250.0" fitWidth="101.0" layoutX="462.0" layoutY="351.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-35.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="475.0" fitWidth="132.0" layoutX="157.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" rotate="47.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="135.0" fitWidth="132.0" layoutX="209.0" layoutY="417.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="70.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="180.0" fitWidth="101.0" layoutX="651.0" layoutY="116.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-45.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="140.0" fitWidth="101.0" layoutX="158.0" layoutY="55.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="30.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
 			<ImageView disable="true" fitHeight="80.0" fitWidth="132.0" layoutX="803.0" layoutY="36.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="45.0">
 			 <image>
-				<Image url="@../icons/Ladder-PNG-Image-45634.png" />
+				<Image url="@/Res/images/Ladder-PNG-Image-45634.png" />
 			 </image>
 			</ImageView>
          </children>

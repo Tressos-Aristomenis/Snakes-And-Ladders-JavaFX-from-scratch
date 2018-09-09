@@ -6,6 +6,7 @@ import POJO.ComputerPlayer;
 import POJO.HumanPlayer;
 import POJO.Piece;
 import POJO.Player;
+import Res.ResourceLoader;
 import enums.GameMode;
 import enums.GameVariation;
 import java.io.File;
@@ -17,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -77,44 +79,44 @@ public class GameGUI implements Initializable {
 	
 	public static final String SNAKE_OR_LADDER_HIT_CELL_STYLE = "-fx-background-color: #FFDF00";
 	private final String DEFAULT_TILE_STYLE = "-fx-background-color: #228b22";
-	private final String BLUE_PIECE_IMAGE_PATH	  = "icons/blue_circle.png";
-	private final String GREEN_PIECE_IMAGE_PATH   = "icons/green_circle.png";
-	private final String ROLL_THE_DICE_IMAGE_PATH = "icons/Dice.png";
-	private final String TRACKS_PATH = "D:\\MyWork\\Other\\Programming\\Refactored_SnakesAndLadders_v2\\Refactored_SnakesAndLadders_v2\\src\\music";
-	private final double MEDIA_VOLUME = 0.4;
+	private final Image BLUE_PIECE_IMAGE = ResourceLoader.getImage("blue_circle.png");
+	private final Image GREEN_PIECE_IMAGE   = ResourceLoader.getImage("green_circle.png");
+	private final Image ROLL_THE_DICE_IMAGE = ResourceLoader.getImage("Dice.png");
+	private final double MEDIA_VOLUME = 0.35;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
 	private GameBoard gameBoard;
 	private GameVariation gameVariation;
 	private GameMode gameMode;
 	private PlayerController playerController;
-	private static MediaPlayer MY_MEDIA_PLAYER;
-	private File[] TRACKLIST;
-	private File TRACKS_DIRECTORY;
+	
 	private Media currentTrack = null;
+	private static MediaPlayer MY_MEDIA_PLAYER;
+	
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		initializeStatus();
+		try {
+			initializeStatus();
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportError(e.toString());
+		}
 	}
-	
+		
 	private void initializeStatus() {
 		colorTiles();
-		
 		gameBoard = new GameBoard();
 		playerController = new PlayerController(this, gameBoard);
-		
 		gameMode = GameMode.AGAINST_HUMAN;
 		gameVariation = GameVariation.CLASSIC;
 		
-		inGameBluePieceImage = new ImageView(BLUE_PIECE_IMAGE_PATH);
-		inGameGreenPieceImage = new ImageView(GREEN_PIECE_IMAGE_PATH);
-		rollTheDiceBtn.setGraphic(new ImageView(ROLL_THE_DICE_IMAGE_PATH));
+		inGameBluePieceImage = new ImageView(BLUE_PIECE_IMAGE);
+		inGameGreenPieceImage = new ImageView(GREEN_PIECE_IMAGE);
+		rollTheDiceBtn.setGraphic(new ImageView(ROLL_THE_DICE_IMAGE));
 		
-		aboutMediaPlayer();
+		initializeMediaPlayer();
 		startNewGame();
-		
-		
 		
 		againstHumanBtn.setOnAction(ev -> {
 			gameMode = GameMode.AGAINST_HUMAN;
@@ -140,7 +142,7 @@ public class GameGUI implements Initializable {
 		resetAllTiles();
 		unlockPieceImages();
 		numberRolledLabel.setText("Game starting...");
-		diceIndicatorImage.setImage(new Image("icons/blankdice.png"));
+		diceIndicatorImage.setImage(ResourceLoader.getImage("blankdice.png"));
 		currentTurnLabel.setText("");
 		lockDiceButton();
 	}
@@ -150,7 +152,7 @@ public class GameGUI implements Initializable {
 		resetAllTiles();
 		unlockPieceImages();
 		numberRolledLabel.setText("Game starting...");
-		diceIndicatorImage.setImage(new Image("icons/blankdice.png"));
+		diceIndicatorImage.setImage(ResourceLoader.getImage("blankdice.png"));
 		currentTurnLabel.setText("");
 		lockDiceButton();
 	}
@@ -196,22 +198,17 @@ public class GameGUI implements Initializable {
 		unlockDiceButton();
 	}
 	
-	public void aboutMediaPlayer() {
-		TRACKS_DIRECTORY = new File(TRACKS_PATH);
-        TRACKLIST = TRACKS_DIRECTORY.listFiles();
-		
-		int randomTrackNumber = new Random().nextInt((TRACKLIST.length -1 - 0) + 1) + 0;
-		File trackDirectory = new File(TRACKS_DIRECTORY.getPath()+"/"+TRACKLIST[randomTrackNumber].getName());
-
-		try {
-			currentTrack = new Media(trackDirectory.toURI().toURL().toString());
-		} catch(MalformedURLException me) {}
+	
+	public void initializeMediaPlayer() {
+		int randomTrackNumber = new Random().nextInt((ResourceLoader.TRACKLIST.length -1 - 0) + 1) + 0;
+		String track = ResourceLoader.getTrack(randomTrackNumber);
+		currentTrack = new Media(track);
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
 		MY_MEDIA_PLAYER.play();
 		MY_MEDIA_PLAYER.setVolume(MEDIA_VOLUME);
 		
-		nowPlayingLabel.setText(TRACKLIST[randomTrackNumber].getName());
+		nowPlayingLabel.setText(ResourceLoader.TRACKLIST[randomTrackNumber].getName());
 		
 		MY_MEDIA_PLAYER.setOnEndOfMedia(new Runnable() {
 			@Override
@@ -233,19 +230,16 @@ public class GameGUI implements Initializable {
 	
 	@FXML
 	public void playNextTrack() {
-		int randomTrackNumber = new Random().nextInt((TRACKLIST.length -1 - 0) + 1) + 0;
-		File trackDirectory = new File(TRACKS_DIRECTORY.getPath()+"/"+TRACKLIST[randomTrackNumber].getName());
-		
-		MY_MEDIA_PLAYER.stop();
-		try {
-			currentTrack = new Media(trackDirectory.toURI().toURL().toString());
-		} catch(MalformedURLException me) {}
+		MY_MEDIA_PLAYER.stop();			// stop current media player.
+		int randomTrackNumber = new Random().nextInt((ResourceLoader.TRACKLIST.length -1 - 0) + 1) + 0;
+		String track = ResourceLoader.getTrack(randomTrackNumber);
+		currentTrack = new Media(track);
 
-		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
+		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);	// create new media player with another track.
 		MY_MEDIA_PLAYER.play();
 		MY_MEDIA_PLAYER.setVolume(MEDIA_VOLUME);
 
-		nowPlayingLabel.setText(TRACKLIST[randomTrackNumber].getName());
+		nowPlayingLabel.setText(ResourceLoader.TRACKLIST[randomTrackNumber].getName());
 	}
 	
 	public void updateScore(Player winner) {
@@ -302,22 +296,22 @@ public class GameGUI implements Initializable {
 	public void indicateDiceRoll(int diceRoll) {
 		switch (diceRoll) {
 			case 1:
-				diceIndicatorImage.setImage(new Image("icons/dice1.png"));
+				diceIndicatorImage.setImage(ResourceLoader.getImage("dice1.png"));
 				break;
 			case 2:
-				diceIndicatorImage.setImage(new Image("icons/dice2.png"));
+				diceIndicatorImage.setImage(ResourceLoader.getImage("dice2.png"));
 				break;
 			case 3:
-				diceIndicatorImage.setImage(new Image("icons/dice3.png"));
+				diceIndicatorImage.setImage(ResourceLoader.getImage("dice3.png"));
 				break;
 			case 4:
-				diceIndicatorImage.setImage(new Image("icons/dice4.png"));
+				diceIndicatorImage.setImage(ResourceLoader.getImage("dice4.png"));
 				break;
 			case 5:
-				diceIndicatorImage.setImage(new Image("icons/dice5.png"));
+				diceIndicatorImage.setImage(ResourceLoader.getImage("dice5.png"));
 				break;
 			case 6:
-				diceIndicatorImage.setImage(new Image("icons/dice6.png"));
+				diceIndicatorImage.setImage(ResourceLoader.getImage("dice6.png"));
 				break;
 		}
 		
@@ -365,6 +359,14 @@ public class GameGUI implements Initializable {
 			System.exit(0);
 		}
 	}
+	
+    public void reportError(String exception) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(exception);
+        alert.showAndWait();
+    }
 	
 	public GameBoard getGameBoard() {
 		return this.gameBoard;
