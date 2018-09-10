@@ -10,9 +10,9 @@ Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_an
 # How to run my application
 
 - Go to my releases.
-- Choose "Code & Executable".
-- Download the .jar file called «SnakesAndLadders_version2.jar».
-- Save and run the .jar file.
+- Choose "Code & Executable" (version 1.0.1).
+- Download the .zip file called «SnakesAndLadders_v1.0.1».
+- Save and run the .jar file that is inside.
 - Enjoy and star my repository if you enjoyed it!
 
 
