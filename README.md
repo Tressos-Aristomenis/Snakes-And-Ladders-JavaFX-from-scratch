@@ -9,7 +9,7 @@ Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_an
 
 # How to run my application
 
-- Go to my releases.
+- Go to my releases (https://github.com/Tressos-Aristomenis/Snakes-And-Ladders-JavaFX-from-scratch/releases).
 - Choose "Code & Executable" (version 1.0.1).
 - Download the .zip file called «SnakesAndLadders_v1.0.1».
 - Save and run the .jar file that is inside.
