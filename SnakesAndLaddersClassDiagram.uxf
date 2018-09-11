@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=10
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>729</x>
+      <y>27</y>
+      <w>189</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Piece
+--
+- color: String
+- position: Integer
+- pieceImage: ImageView
+--
++ Setters
++ Getters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>333</y>
+      <w>189</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Tile
+--
+- position: Integer
+- tileContainer: TileContainer
+--
++ Setters
++ Getters
++ containsLadderOrSnake()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>486</y>
+      <w>360</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>GameBoard
+--
+- delays, rows and columns number.
+- tiles: Tile[]
+- player1, player2: Player
+- SNAKES: Map&lt;Integer, Integer&gt;
+- LADDERS: Map&lt;Integer, Integer&gt;
+--
++ getUpdatedPosition(currentPosition: Integer): Integer
++ getBoardCoordinates(newIndex: Integer): int[]
++ set/getPlayer1()
++ set/getPlayer2()
++ getCurrentPlayer()
++ getTile(index: Integer): Tile
++ playAgainOrExit(): Boolean
++ rollDice(): Integer
+- initializeTiles()
+- initializeSnakesAndLaddersPositions()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9</x>
+      <y>171</y>
+      <w>261</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Computer Player
+--
++ getPlayerType(): PlayerType.COMPUTER
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>729</x>
+      <y>171</y>
+      <w>234</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Human Player
+--
++ getPlayerType(): PlayerType.HUMAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>405</x>
+      <y>162</y>
+      <w>189</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>/Player/
+--
+- turn: Integer
+- playerPiece: Piece
+--
++ Setters
++ Getters
++ getPlayerType()
++ toString()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>639</y>
+      <w>216</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>GameGUI
+--
+- gameBoard: GameBoard
+- gameMode: GameMode
+- playerController: PlayerController
+- FXML stuff
+_- MY_MEDIA_PLAYER: MediaPlayer_
+- Media Player stuff
+- Paths for images, styles etc.
+--
++ onDiceClick()
++ updateScore()
++ choosePieceImage()
++ aboutMediaPlayer()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>990</x>
+      <y>684</y>
+      <w>261</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>updates the GUI,
+controller.
+
+At initialize: gameBoard =
+= new GameBoard(gameGrid: GridPane)
+
+Creates instance for PlayerImplementation.
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>801</x>
+      <y>702</y>
+      <w>207</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>261</x>
+      <y>207</y>
+      <w>162</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>207</y>
+      <w>162</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>396</x>
+      <y>45</y>
+      <w>207</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+PlayerType
+--
+HUMAN, COMPUTER</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>351</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+TileContainer
+--
+NONE, LADDER, SNAKE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>495</x>
+      <y>315</y>
+      <w>216</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>PlayerController
+--
+- gameGUI: GameGUI
+- gameBoard: GameBoard
+--
++ rollTheDiceAndMove()
++ move(new_index)
++ getPlayerIndexAfterRoll(diceRoll: Integer): Integer
++ isComputerTurn(): Boolean
++ swapTurns()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>990</x>
+      <y>630</y>
+      <w>261</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>onPieceChoose() - creates 2 players
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>801</x>
+      <y>639</y>
+      <w>207</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>504</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+GameMode
+--
+AGAINST_HUMAN, AGAINST_COMPUTER</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>108</y>
+      <w>27</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>378</y>
+      <w>144</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>558</y>
+      <w>27</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>72</y>
+      <w>162</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  1
+            has</panel_attributes>
+    <additional_attributes>10.0;100.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>594</x>
+      <y>414</y>
+      <w>54</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  1
+ updates</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>63</y>
+      <w>117</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  1
+&lt; contains</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0;110.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>675</y>
+      <w>162</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  1
+
+
+
+
+&lt; consists of</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;160.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>207</x>
+      <y>270</y>
+      <w>216</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  2
+contains &gt;</panel_attributes>
+    <additional_attributes>10.0;240.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>63</x>
+      <y>315</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+GameVariation
+--
+CLASSIC, ARISTOMENIS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>369</y>
+      <w>27</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>459</x>
+      <y>414</y>
+      <w>144</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  1
+ has direct access
+ to game board</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+</diagram>
