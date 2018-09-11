@@ -12,6 +12,8 @@ import enums.GameVariation;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,7 +29,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import static javax.swing.text.html.HTML.Tag.HEAD;
 
 /**
  *
@@ -36,6 +38,9 @@ import static javax.swing.text.html.HTML.Tag.HEAD;
 public class GameGUI implements Initializable {
     @FXML
     private GridPane gameGrid;
+	
+	@FXML
+	private Slider volumeSlider;
 	
     @FXML
     private Label nowPlayingLabel;
@@ -78,20 +83,19 @@ public class GameGUI implements Initializable {
 	
 	public static final String SNAKE_OR_LADDER_HIT_CELL_STYLE = "-fx-background-color: #FFDF00";
 	private final String DEFAULT_TILE_STYLE = "-fx-background-color: #228b22";
-
 	private final Image BLUE_PIECE_IMAGE = ResourceLoader.getImage("blue_circle.png");
 	private final Image GREEN_PIECE_IMAGE   = ResourceLoader.getImage("green_circle.png");
 	private final Image ROLL_THE_DICE_IMAGE = ResourceLoader.getImage("Dice.png");
-	private final double MEDIA_VOLUME = 0.35;
+	private final int DEFAULT_STARTING_VOLUME = 35;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
 	private GameBoard gameBoard;
 	private GameVariation gameVariation;
 	private GameMode gameMode;
 	private PlayerController playerController;
-	
-	private Media currentTrack = null;
 	private static MediaPlayer MY_MEDIA_PLAYER;
+	private Media currentTrack = null;
+	
 	
 	
 	@Override
@@ -115,9 +119,6 @@ public class GameGUI implements Initializable {
 		inGameGreenPieceImage = new ImageView(GREEN_PIECE_IMAGE);
 		rollTheDiceBtn.setGraphic(new ImageView(ROLL_THE_DICE_IMAGE));
 		
-		initializeMediaPlayer();
-		startNewGame();
-		
 		againstHumanBtn.setOnAction(ev -> {
 			gameMode = GameMode.AGAINST_HUMAN;
 			startNewGame();
@@ -134,6 +135,9 @@ public class GameGUI implements Initializable {
 			gameVariation = GameVariation.ARISTOMENIS;
 			startNewGame();
 		});
+		
+		initializeMediaPlayer();
+		startNewGame();
 	}
 	
 	private void startNewGame() {
@@ -206,7 +210,15 @@ public class GameGUI implements Initializable {
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
 		MY_MEDIA_PLAYER.play();
-		MY_MEDIA_PLAYER.setVolume(MEDIA_VOLUME);
+		
+		
+		volumeSlider.setValue(MY_MEDIA_PLAYER.getVolume() * DEFAULT_STARTING_VOLUME);
+		volumeSlider.valueProperty().addListener(new InvalidationListener() {
+			@Override
+			public void invalidated(Observable observable) {
+				MY_MEDIA_PLAYER.setVolume(volumeSlider.getValue() / 100.0);
+			}
+		});
 		
 		nowPlayingLabel.setText(ResourceLoader.TRACKLIST[randomTrackNumber].getName());
 		
@@ -217,7 +229,6 @@ public class GameGUI implements Initializable {
 			}
 		});
 	}
-	
 	
 	@FXML
         public void resumeTrack() {
@@ -238,7 +249,6 @@ public class GameGUI implements Initializable {
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);	// create new media player with another track.
 		MY_MEDIA_PLAYER.play();
-		MY_MEDIA_PLAYER.setVolume(MEDIA_VOLUME);
 
 		nowPlayingLabel.setText(ResourceLoader.TRACKLIST[randomTrackNumber].getName());
 	}
