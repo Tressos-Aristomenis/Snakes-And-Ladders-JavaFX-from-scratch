@@ -10,7 +10,7 @@ Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_an
 # How to run my application
 
 - Go to my releases (https://github.com/Tressos-Aristomenis/Snakes-And-Ladders-JavaFX-from-scratch/releases).
-- Choose "Code & Executable" (latest version).
+- Go to my latest release.
 - Download the .zip file.
 - Save and run the .jar file that is inside.
 - Enjoy and star my repository if you enjoyed it!
@@ -37,5 +37,5 @@ I have added some background music of one of my favourite artists, "Yann Tiersen
 
 # // TO-DO:
 
-- Place a volume slider (DONE).
-- Fix potential bug when last square is reached. (Show-and-wait and PauseTransition don't work well together)
+- ✔ Place a volume slider .
+- ✔ Fix potential bug when last square is reached. (Show-and-wait and PauseTransition don't work well together)
