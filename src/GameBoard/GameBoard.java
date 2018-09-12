@@ -5,11 +5,7 @@ import POJO.Tile;
 import enums.TileContainer;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Random;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -21,15 +17,13 @@ public class GameBoard {
 	public static final int NUMBER_OF_TILES = ROWS * COLS;
 	public static final int WIN_POINT = 100;
 	public static final int DICE_ROLL_DELAY = 1;
-	public static final int SECOND_MOVE_DELAY = 0;
-	public static final int BEFORE_COMPUTER_TURN_DELAY = 2;
+	public static final int COMPUTER_MOVE_DELAY = 2;
 	public static final int PLAYER_STARTING_POSITION = 0;
 	
 	private Tile[] tiles;
 	private Player player1, player2;
 	private Map<Integer, Integer> SNAKES;
 	private Map<Integer, Integer> LADDERS;
-	
 	
 	public GameBoard() {
 		initializeSNAKESandLADDERSPositions();
@@ -102,17 +96,6 @@ public class GameBoard {
 		final int MAX = 6;
 		
 		return new Random().nextInt((MAX - MIN) + 1) + MIN;
-	}
-	
-	public boolean playAgainOrExit() {
-		Alert alert = new Alert(AlertType.NONE);
-		alert.setTitle("Game Over!");
-		alert.setContentText(getCurrentPlayer().getPlayerPiece().getColor().toUpperCase() + " WINS !!!\n\nDo you want to play again?");
-		alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-		
-		Optional<ButtonType> result = alert.showAndWait();
-		
-		return (result.get() == ButtonType.YES);
 	}
 	
 	public Player getCurrentPlayer() {

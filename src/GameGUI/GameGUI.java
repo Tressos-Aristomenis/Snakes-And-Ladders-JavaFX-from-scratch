@@ -9,6 +9,7 @@ import POJO.Player;
 import Res.ResourceLoader;
 import enums.GameMode;
 import enums.GameVariation;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -16,8 +17,11 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,6 +33,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
 /**
  *
@@ -86,7 +91,7 @@ public class GameGUI implements Initializable {
 	private final Image BLUE_PIECE_IMAGE = ResourceLoader.getImage("blue_circle.png");
 	private final Image GREEN_PIECE_IMAGE   = ResourceLoader.getImage("green_circle.png");
 	private final Image ROLL_THE_DICE_IMAGE = ResourceLoader.getImage("Dice.png");
-	private final int DEFAULT_STARTING_VOLUME = 35;
+	private final double DEFAULT_STARTING_VOLUME = 0.0;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
 	private GameBoard gameBoard;
@@ -210,7 +215,7 @@ public class GameGUI implements Initializable {
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
 		MY_MEDIA_PLAYER.play();
-		
+		MY_MEDIA_PLAYER.setVolume(DEFAULT_STARTING_VOLUME);
 		
 		volumeSlider.setValue(MY_MEDIA_PLAYER.getVolume() * DEFAULT_STARTING_VOLUME);
 		volumeSlider.valueProperty().addListener(new InvalidationListener() {
@@ -360,10 +365,34 @@ public class GameGUI implements Initializable {
 	}
 	
 	public void gameOver() {
-		boolean restartGame = gameBoard.playAgainOrExit();
+		Stage gameOverStage = new Stage();
+		Player winner = gameBoard.getCurrentPlayer();
+		Parent root = null;
+		PlayAgainOrExitAlert playAgainOrExit = null;
 		
-		if (restartGame) {
-			Player winner = gameBoard.getCurrentPlayer();
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlayAgainOrExitPanel.fxml"));
+			root = fxmlLoader.load();
+			playAgainOrExit = fxmlLoader.<PlayAgainOrExitAlert>getController();
+			playAgainOrExit.setWinnerName(winner.getPlayerPiece().getColor().toUpperCase());
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		
+		gameOverStage.setTitle("Game over");
+		gameOverStage.setScene(new Scene(root));
+		gameOverStage.show();
+		gameOverStage.setAlwaysOnTop(true);
+		
+		gameOverStage.setOnCloseRequest(ev -> {
+			playAgainOrNot();
+		});
+	}
+	
+	private void playAgainOrNot() {
+		Player winner = gameBoard.getCurrentPlayer();
+		
+		if (PlayAgainOrExitAlert.isRematch) {
 			updateScore(winner);
 			playAgain();
 		} else {

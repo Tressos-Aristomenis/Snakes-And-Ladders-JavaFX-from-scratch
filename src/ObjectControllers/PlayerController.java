@@ -22,15 +22,16 @@ public class PlayerController {
 		this.gameBoard = gameBoard;
 	}
 	
-	private PauseTransition pause;
 	public void rollDiceAndMove() {
 		int diceRoll = gameBoard.rollDice();
+		gameGUI.lockDiceButton();
 		
-		pause = new PauseTransition(Duration.seconds(GameBoard.DICE_ROLL_DELAY));
+		PauseTransition pause = new PauseTransition(Duration.seconds(GameBoard.DICE_ROLL_DELAY));
 		
 		pause.setOnFinished(event -> {
 			gameGUI.indicateDiceRoll(diceRoll);
 			gameGUI.resetAllTiles();
+			gameGUI.unlockDiceButton();
 			
 			int newIndex = getPlayerIndexAfterRoll(diceRoll);
 			move(newIndex);
@@ -38,14 +39,39 @@ public class PlayerController {
 			if (newIndex == GameBoard.WIN_POINT) {
 				pause.stop();
 				gameGUI.gameOver();
-				return;
+			} else {
+				swapTurns();
+				gameGUI.updateCurrentTurnLabel();
 			}
 			
-			swapTurns();
-			gameGUI.updateCurrentTurnLabel();
-			
 			if (isComputerTurn()) {
-				rollDiceAndMove();
+				computerRollDiceAndMove();
+			}
+		});
+		
+		pause.play();
+	}
+	
+	public void computerRollDiceAndMove() {
+		int diceRoll = gameBoard.rollDice();
+		gameGUI.lockDiceButton();
+		
+		PauseTransition pause = new PauseTransition(Duration.seconds(GameBoard.COMPUTER_MOVE_DELAY));
+		
+		pause.setOnFinished(event -> {
+			gameGUI.indicateDiceRoll(diceRoll);
+			gameGUI.resetAllTiles();
+			gameGUI.unlockDiceButton();
+			
+			int newIndex = getPlayerIndexAfterRoll(diceRoll);
+			move(newIndex);
+			
+			if (newIndex == GameBoard.WIN_POINT) {
+				pause.stop();
+				gameGUI.gameOver();
+			} else {
+				swapTurns();
+				gameGUI.updateCurrentTurnLabel();
 			}
 		});
 		
