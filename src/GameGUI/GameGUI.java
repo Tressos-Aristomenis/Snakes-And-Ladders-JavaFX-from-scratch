@@ -91,7 +91,7 @@ public class GameGUI implements Initializable {
 	private final Image BLUE_PIECE_IMAGE = ResourceLoader.getImage("blue_circle.png");
 	private final Image GREEN_PIECE_IMAGE   = ResourceLoader.getImage("green_circle.png");
 	private final Image ROLL_THE_DICE_IMAGE = ResourceLoader.getImage("Dice.png");
-	private final double DEFAULT_STARTING_VOLUME = 0.0;
+	private final double DEFAULT_STARTING_VOLUME = 0.35;
 	
 	private ImageView inGameBluePieceImage, inGameGreenPieceImage;
 	private GameBoard gameBoard;
@@ -100,7 +100,6 @@ public class GameGUI implements Initializable {
 	private PlayerController playerController;
 	private static MediaPlayer MY_MEDIA_PLAYER;
 	private Media currentTrack = null;
-	
 	
 	
 	@Override
@@ -215,15 +214,9 @@ public class GameGUI implements Initializable {
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
 		MY_MEDIA_PLAYER.play();
-<<<<<<< HEAD
-<<<<<<< HEAD
 		MY_MEDIA_PLAYER.setVolume(DEFAULT_STARTING_VOLUME);
-=======
->>>>>>> 784998a3cc437a2c0687c8331a8bed24b8f99517
-=======
->>>>>>> 784998a3cc437a2c0687c8331a8bed24b8f99517
 		
-		volumeSlider.setValue(MY_MEDIA_PLAYER.getVolume() * DEFAULT_STARTING_VOLUME);
+		volumeSlider.setValue(MY_MEDIA_PLAYER.getVolume() * 100);
 		volumeSlider.valueProperty().addListener(new InvalidationListener() {
 			@Override
 			public void invalidated(Observable observable) {
