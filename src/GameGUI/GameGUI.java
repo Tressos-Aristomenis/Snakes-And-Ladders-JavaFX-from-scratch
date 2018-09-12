@@ -215,13 +215,7 @@ public class GameGUI implements Initializable {
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);
 		MY_MEDIA_PLAYER.play();
-<<<<<<< HEAD
-<<<<<<< HEAD
 		MY_MEDIA_PLAYER.setVolume(DEFAULT_STARTING_VOLUME);
-=======
->>>>>>> 784998a3cc437a2c0687c8331a8bed24b8f99517
-=======
->>>>>>> 784998a3cc437a2c0687c8331a8bed24b8f99517
 		
 		volumeSlider.setValue(MY_MEDIA_PLAYER.getVolume() * DEFAULT_STARTING_VOLUME);
 		volumeSlider.valueProperty().addListener(new InvalidationListener() {
