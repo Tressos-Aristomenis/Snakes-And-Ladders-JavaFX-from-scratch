@@ -36,5 +36,5 @@ I have added some background music of one of my favourite artists, "Yann Tiersen
 # // TO-DO:
 
 - ✔ Add a volume slider.
-- ✔ Fix potential bug when last square is reached (Show-and-wait and PauseTransition don't work well together). 
+- ✔ Fix potential bug when last square is reached (Show-and-wait and PauseTransition don't work well together).
 - Resizable for multiple screens.
