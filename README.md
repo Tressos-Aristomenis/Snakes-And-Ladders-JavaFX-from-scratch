@@ -10,7 +10,7 @@ Here is some information about the game: https://en.wikipedia.org/wiki/Snakes_an
 - Go to my releases (https://github.com/Tressos-Aristomenis/Snakes-And-Ladders-JavaFX-from-scratch/releases).
 - Go to my latest release.
 - Download the .zip file.
-- Save and run the .jar file that is inside.
+- Unzip and run the .jar file that is inside.
 - Enjoy and star my repository if you enjoyed it!
 
 
