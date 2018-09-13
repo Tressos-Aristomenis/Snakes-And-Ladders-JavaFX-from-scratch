@@ -29,7 +29,7 @@ Warning: This edition is extremely disturbing after some time.
 
 
 # Features
-I have added some background music of one of my favourite artists, "Yann Tiersen". You can always pause it if you dislike it.
+I have added some background music of one of my favourite artists, "Yann Tiersen". You can always pause or mute if you dislike it.
 "music" folder contains all the tracks.
 
 
