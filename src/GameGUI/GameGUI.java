@@ -235,12 +235,12 @@ public class GameGUI implements Initializable {
 	}
 	
 	@FXML
-        public void resumeTrack() {
+    public void resumeTrack() {
 		MY_MEDIA_PLAYER.play();
 	}
 	
 	@FXML
-        public void pauseTrack() {
+    public void pauseTrack() {
 		MY_MEDIA_PLAYER.pause();
 	}
 	
@@ -253,8 +253,16 @@ public class GameGUI implements Initializable {
 		
 		MY_MEDIA_PLAYER = new MediaPlayer(currentTrack);	// create new media player with another track.
 		MY_MEDIA_PLAYER.play();
+		MY_MEDIA_PLAYER.setVolume(volumeSlider.getValue() / 100.0);
 
 		nowPlayingLabel.setText(ResourceLoader.TRACKLIST[randomTrackNumber].getName());
+		
+		MY_MEDIA_PLAYER.setOnEndOfMedia(new Runnable() {
+			@Override
+			public void run() {
+				playNextTrack();
+			}
+		});
 	}
 	
 	public void updateScore(Player winner) {
