@@ -38,4 +38,4 @@ Warning: This edition is extremely disturbing after some time.
 
 - ✔ Add a volume slider.
 - ✔ Fix potential bug when last square is reached (Show-and-wait and PauseTransition don't work well together).
-- Resizable for multiple screens.
+- Make it resizable for multiple screens.
